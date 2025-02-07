@@ -1,0 +1,9 @@
+//* Circle text (jhey)
+
+@for $i from 1 through $letter-amount {
+  .text span:nth-child(#{$i}) {
+    transform: translate(-50%, -50%)
+      rotate($angle * $i * 1deg)
+      translateY($radiusTrig / 2); // /2 to increase / decrease radius
+  }
+}

@@ -1,0 +1,12 @@
+// *Spiral text. Or a mess depending
+
+$divider: 3; // 11 - star
+@for $i from 1 through $letter-amount {
+  .text span:nth-child(#{$i}) {
+    $deg: $i * ($angle / $divider); // spiral
+    transform: translateX(cos($deg) * 200px) translateY(sin($deg) * 200px);
+  }
+  .text span:nth-child(#{$i}) i {
+    transform: rotate(calc(2deg * $i));
+  }
+}

@@ -1,0 +1,14 @@
+//* Circle text (my take)
+
+@for $i from 1 through $letter-amount {
+  $deg: (2 * 3.14) / $angle * $i;
+
+  .text span:nth-child(#{$i}) {
+    transform: translateX(cos($deg) * $radius) translateY(sin($deg) * $radius);
+    //or
+    // transform: translateX(cos(2 * 3.14 / $angle * $i) * $radius) translateY(sin(2 * 3.14 / $angle * $i) * $radius);
+  }
+  .text span:nth-child(#{$i}) i {
+    transform: rotate($angle * $i * 1deg); //! letter baseline perpendicular to the circle
+  }
+}

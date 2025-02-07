@@ -1,0 +1,7 @@
+//* Circle text without trigonometry (jhey)
+
+@for $i from 1 through $letter-amount {
+  .text span:nth-child(#{$i}) {
+    transform: translate(-50%, -50%) rotate($angle * $i * 1deg) translateY(calc(10 * -1ch));
+  }
+}

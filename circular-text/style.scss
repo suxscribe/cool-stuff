@@ -1,0 +1,38 @@
+$base-size: 8px;
+
+$letter-amount: 19;
+$radius: 100px;
+$angle: 360 / $letter-amount;
+$charWidth: 1; // In ch units
+$radiusTrig: ($charWidth / sin($angle) * -1ch); // hypotenuse = opposite / sin
+
+@import 'scss/base.scss';
+
+//* Different takes
+@import 'scss/trigonometry-jhey.scss';
+// @import 'scss/trigonometry-sin-cos.scss';
+// @import 'scss/no-trigonometry.scss';
+// @import 'scss/spiral-mess.scss';
+
+.text {
+  position: relative;
+  animation: spin 21s infinite linear;
+
+  & span {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    & i {
+      display: block;
+      font-style: normal;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
