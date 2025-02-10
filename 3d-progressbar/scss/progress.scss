@@ -1,0 +1,66 @@
+$line-width: $base-size * 10;
+$transition-duration: 1s;
+
+.progress {
+  display: flex;
+  transform-style: preserve-3d;
+
+  &__wrap {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0) rotateZ(0);
+    transition: transform 0.3s ease;
+
+    .container.active & {
+      transform: rotateX(-90deg);
+    }
+  }
+
+  &__line {
+    width: $line-width;
+    height: $base-size * 6;
+    background-color: #eee;
+    backface-visibility: visible;
+
+    background: linear-gradient(to right, #eee, #eee 50%, #77c 50%, #77c);
+    background-size: calc(200% + 1px) 100%;
+    background-position: $line-width * -2 - 1px 0;
+
+    transition: background-position $transition-duration linear;
+
+    .progress.active & {
+      background-position: $line-width * -1 - 1px;
+    }
+
+    &:nth-child(1) {
+    }
+
+    &:nth-child(2) {
+    }
+    &:nth-child(3) {
+      transform: rotateY(90deg) translateX(50%) translateZ(-#{$line-width * 0.5});
+    }
+    &:nth-child(4) {
+      margin-left: $line-width * -1;
+      transform: translateZ(-#{$line-width});
+    }
+    &:nth-child(5) {
+      transform: rotateY(-90deg) translateX(-50%) translateZ(#{$line-width * 0.5});
+    }
+    &:nth-child(6) {
+      margin-left: $line-width * -1;
+    }
+    &:nth-child(7) {
+    }
+    &:nth-child(8) {
+    }
+    &:nth-child(9) {
+    }
+
+    @for $i from 1 through 9 {
+      &:nth-child(#{$i}) {
+        transition-delay: $transition-duration * ($i - 1);
+      }
+    }
+  }
+}

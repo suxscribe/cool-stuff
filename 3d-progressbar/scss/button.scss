@@ -1,0 +1,14 @@
+.button {
+  appearance: none;
+  border-radius: $base-size;
+  background-color: #ccc;
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}
