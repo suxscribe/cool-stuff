@@ -1,0 +1,227 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.range-slider {
+  width: 300px;
+  height: 30px;
+  padding: 20px 0;
+}
+.range-slider__inner {
+  position: relative;
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+}
+.range-slider__inner-fill {
+  position: absolute;
+  height: 100%;
+  background: #007bff;
+  border-radius: 2px;
+}
+.range-slider__inner-thumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #007bff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --rotation {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-container {
+  width: 100vw;
+  height: 300dvh;
+}
+
+.gallery {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  animation: go-round linear;
+  animation-timeline: scroll();
+}
+.gallery-wrapper {
+  position: fixed;
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-wrapper:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.gallery-item {
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.gallery-item--0 {
+  --angle: calc((45 * 0) * 1deg + (var(--rotation)));
+}
+.gallery-item--0 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--0 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--1 {
+  --angle: calc((45 * 1) * 1deg + (var(--rotation)));
+}
+.gallery-item--1 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--1 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--2 {
+  --angle: calc((45 * 2) * 1deg + (var(--rotation)));
+}
+.gallery-item--2 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--2 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--3 {
+  --angle: calc((45 * 3) * 1deg + (var(--rotation)));
+}
+.gallery-item--3 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--3 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--4 {
+  --angle: calc((45 * 4) * 1deg + (var(--rotation)));
+}
+.gallery-item--4 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--4 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--5 {
+  --angle: calc((45 * 5) * 1deg + (var(--rotation)));
+}
+.gallery-item--5 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--5 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--6 {
+  --angle: calc((45 * 6) * 1deg + (var(--rotation)));
+}
+.gallery-item--6 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--6 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item--7 {
+  --angle: calc((45 * 7) * 1deg + (var(--rotation)));
+}
+.gallery-item--7 .gallery-item__inner {
+  backface-visibility: hidden;
+  transform: translateX(calc(cos(var(--angle)) * 300px)) translateY(calc(sin(var(--angle)) * 300px)) rotate(calc(var(--angle) + 90deg));
+}
+.gallery--inline .gallery-item--7 .gallery-item__inner {
+  transform: translateX(calc(cos(var(--angle)) * 300px)) rotateY(calc(var(--angle) + 90deg));
+}
+.gallery-item__inner {
+  width: 200px;
+  height: 200px;
+  transition: transform 0.3s ease;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+@keyframes anime {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes go-round {
+  0% {
+    --rotation: 0deg;
+  }
+  100% {
+    --rotation: 360deg;
+  }
+}/*# sourceMappingURL=style.css.map */

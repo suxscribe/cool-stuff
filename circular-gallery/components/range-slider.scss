@@ -1,0 +1,30 @@
+.range-slider {
+  width: 300px;
+  height: 30px;
+  padding: 20px 0;
+
+  &__inner {
+    position: relative;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+
+    &-fill {
+      position: absolute;
+      height: 100%;
+      background: #007bff;
+      border-radius: 2px;
+    }
+
+    &-thumb {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: #007bff;
+      border-radius: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+  }
+}
