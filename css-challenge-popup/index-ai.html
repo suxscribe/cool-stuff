@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+  <style>
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button-wrap {
+      position: relative;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 15px);
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 12px;
+      background: white;
+      border-radius: 6px;
+      /* The magic starts here */
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    /* Creating that fancy arrow with pseudo-elements */
+    .tooltip::before,
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Outer stroke (transparent border) */
+    .tooltip::before {
+      border: 8px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.1);
+      margin-top: 1px;
+    }
+
+    /* Inner arrow with rounded tip */
+    .tooltip::after {
+      width: 10px;
+      height: 10px;
+      background: white;
+      transform: translateX(-50%) rotate(45deg);
+      margin-top: -5px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="button-wrap">
+      <div class="button">
+        button
+      </div>
+      <div class="tooltip">
+        <span>Tooltip</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
