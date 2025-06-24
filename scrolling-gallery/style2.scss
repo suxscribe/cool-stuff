@@ -81,7 +81,7 @@ $base-size: 8px;
 .gallery,
 img {
   animation-timeline: scroll(root);
-  animation: 1s scale-up both ease-in;
+  animation: 1s scale-up both ease;
 }
 
 @keyframes scale-up {
