@@ -6,6 +6,39 @@ const authElContainer = document.querySelector('.auth-block__container');
 let screenWidth = window.innerWidth;
 let screenHeight = window.innerHeight;
 
+// Detect if we're on desktop (no touch capability)
+const isDesktop = !('ontouchstart' in window) && !navigator.maxTouchPoints;
+
+// GUI controls
+const controls = {
+  rotationAngle: 0,
+  manualControl: isDesktop, // Auto-enable manual control on desktop
+  resetAngle: () => {
+    rotationGui.reset();
+  },
+};
+
+const gui = new lil.GUI();
+const rotationGui = gui
+  .add(controls, 'rotationAngle', -90, 90)
+  .name('Rotation Angle')
+  .onChange((value) => {
+    if (controls.manualControl) {
+      rotateEl(value);
+    }
+  });
+gui
+  .add(controls, 'manualControl')
+  .name('Manual Control')
+  .onChange((value) => {
+    if (!value) {
+      // Reset to device orientation if available
+      rotationGui.reset();
+      rotateEl(0);
+    }
+  });
+gui.add(controls, 'resetAngle');
+
 const initOrientation = () => {
   if (typeof DeviceOrientationEvent !== 'undefined') {
     // Check if we need to request permission (iOS 13+ requirement)
@@ -76,11 +109,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const rotateEl = (angle) => {
-  // authEl.style.rotate = `${angle}deg`;
+  document.documentElement.style.setProperty('--rotation-angle', `${angle}deg`);
 
-  authEl?.querySelectorAll('form > *').forEach((item) => {
-    item.style.rotate = `${angle}deg`;
-  });
+  // authEl?.querySelectorAll('form > *').forEach((item, index) => {
+  //   item.style.rotate = `${angle}deg`;
+  // });
 
   authElWrapper.style.width = `${rotatedWidth(angle)}px`;
 };
