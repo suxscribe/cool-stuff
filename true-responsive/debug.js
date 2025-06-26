@@ -19,6 +19,8 @@ class Debug {
 
   initGUI() {
     this.gui = new lil.GUI();
+    this.gui.close(); // Collapse GUI by default
+
     this.rotationGui = this.gui
       .add(this.controls, 'rotationAngle', -90, 0)
       .name('Rotation Angle')

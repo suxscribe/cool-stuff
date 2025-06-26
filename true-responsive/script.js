@@ -178,9 +178,9 @@ class TrueResponsive {
       // Pick a Delta that keeps element inside, prefer 0 if possible
       let delta = Math.max(low, Math.min(0, high));
 
-      if (index === 0) {
+      if (index === 5) {
         console.log('overshootL:', overshootL, 'overshootR:', overshootR);
-        console.log('low:', low, 'high:', high);
+        console.log('low:', low, 'high:', high, 'delta:', delta);
       }
 
       // --------------------------------------------------
