@@ -5,16 +5,12 @@ const authElContainer = document.querySelector('.auth-block__container');
 
 const sidePadding = 16;
 
-// let screenWidth = 560; //window.innerWidth;
-// let screenHeight = 800; //window.innerHeight;
-
-// Detect if we're on desktop (no touch capability)
 const isDesktop = !('ontouchstart' in window) && !navigator.maxTouchPoints;
 
 // GUI controls
 const controls = {
   rotationAngle: 0,
-  manualControl: isDesktop, // Auto-enable manual control on desktop
+  manualControl: isDesktop,
   resetAngle: () => {
     rotationGui.reset();
   },
@@ -80,17 +76,18 @@ const initOrientation = () => {
   }
 };
 
-const rotatedWidth = (angle, container = window) => {
+const rotatedWidth = (angle, container) => {
   const angleRad = (angle * Math.PI) / 180;
 
-  const containerWidth = container.innerWidth;
-  const containerHeight = container.innerHeight;
+  const containerWidth = container ? container.offsetWidth : window.innerWidth;
+  const containerHeight = container ? container.offsetHeight : window.innerHeight;
 
   // Width needed for edge-to-edge horizontal span when rotated
-  return Math.min(
+  const width = Math.min(
     Math.abs(containerWidth * Math.cos(angleRad)) + Math.abs(containerHeight * Math.sin(angleRad)),
     Math.abs(containerWidth / Math.cos(angleRad))
   );
+  return width;
 };
 
 const handleOrientation = (e) => {
@@ -151,10 +148,12 @@ function rectRelativeTo(el, container) {
 
 const rotateEl = (angle) => {
   document.documentElement.style.setProperty('--rotation-angle', `${angle}deg`);
-  authElWrapper.style.width = `${rotatedWidth(angle, authElContainer)}px`;
+
+  // Calculate wrapper width dynamically
+  // authElWrapper.style.width = `${rotatedWidth(angle, authElContainer)}px`;
 
   authEl?.querySelectorAll('form > *').forEach((item, index) => {
-    // Temporarily reset the translateX to get a clean measurement
+    // Reset transforms to measure Rect correctly
     item.style.transform = 'translateX(0px)';
     item.style.width = 'auto';
 
