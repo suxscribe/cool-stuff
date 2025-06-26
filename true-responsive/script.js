@@ -138,7 +138,7 @@ class TrueResponsive {
       // --------------------------------------------------
       // 1) Compute translation range that satisfies all sides
       // --------------------------------------------------
-      let low = -Infinity; // minimum allowed Delta
+      let low = 0; // minimum allowed Delta
       let high = Infinity; // maximum allowed Delta
 
       // Horizontal constraints (left / right)
