@@ -72,14 +72,15 @@ body {
 .item-debug {
   display: none;
   position: absolute;
-  top: -10px;
-  left: 0px;
+  top: 0px;
+  left: 1px;
   font-size: 10px;
   font-family: monospace;
   color: white;
   z-index: 1000;
   pointer-events: none;
   opacity: 0.6;
+  white-space: nowrap;
 }
 
 .debug {

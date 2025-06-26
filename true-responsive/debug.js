@@ -67,10 +67,10 @@ class Debug {
     }
   }
 
-  updateItemDebug(item, itemRect, overshootL, overshootR, overshootT, overshootB) {
+  updateItemDebug(item, index, itemRect, overshootL, overshootR, overshootT, overshootB) {
     const debugDiv = item.querySelector('.item-debug');
     if (this.controls.showDebug && debugDiv) {
-      debugDiv.innerHTML = `
+      debugDiv.innerHTML = `${index}: 
         L: ${itemRect.left.toFixed(1)} | T: ${itemRect.top.toFixed(1)} 
         | R: ${itemRect.right.toFixed(1)} | B: ${itemRect.bottom.toFixed(1)}
         | oL: ${overshootL.toFixed(1)} | oR: ${overshootR.toFixed(1)}

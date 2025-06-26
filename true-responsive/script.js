@@ -118,7 +118,15 @@ class TrueResponsive {
       const overshootT = Math.max(0, -itemRect.top);
       const overshootB = Math.max(0, itemRect.bottom - this.authElContainer.clientHeight);
 
-      this.debug.updateItemDebug(item, itemRect, overshootL, overshootR, overshootT, overshootB);
+      this.debug.updateItemDebug(
+        item,
+        index,
+        itemRect,
+        overshootL,
+        overshootR,
+        overshootT,
+        overshootB
+      );
 
       const rad = (angle * Math.PI) / 180;
       const cosA = Math.cos(rad);
