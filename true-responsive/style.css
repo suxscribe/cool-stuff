@@ -39,18 +39,16 @@ select {
   font-size: inherit;
 } */
 
+:root {
+  --transition: 0.1s;
+}
+
 body {
   max-width: 100vw;
   max-height: 100dvh;
   overflow: hidden;
-}
 
-.debug {
-  font-family: monospace;
-  font-size: 12px;
-  color: white;
-  width: 100%;
-  text-align: left;
+  background-color: oklch(27.9% 0.041 260.031);
 }
 
 .auth-block {
@@ -63,14 +61,77 @@ body {
   justify-content: center;
   position: relative;
 
-  overflow: hidden;
+  /* overflow: hidden; */
   max-width: 100vw;
   height: 100vh;
   max-height: 100vh;
+
+  width: 560px;
+  height: 800px;
+  border: 2px solid rgba(200, 210, 250, 0.6);
 }
 
 .auth-block__wrapper {
-  width: 100%;
+  /* width: 100%; */
+  width: 975px;
+  border: 2px solid rgba(250, 160, 20, 0.3);
   /* position: absolute; */
   /* overflow: hidden; */
+}
+/* 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+form > * {
+  /* rotate: var(--rotation-angle, 0deg); */
+}
+.auth-block__form {
+  rotate: var(--rotation-angle, 0deg);
+  background-color: rgba(255, 255, 255, 0.2);
+  /* transition: rotate var(--transition); */
+
+  & * {
+    position: relative;
+    /* transition: all var(--transition); */
+  }
+}
+
+.lil-gui.autoPlace {
+  top: auto !important;
+  bottom: 0 !important;
+}
+
+.item-debug {
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  font-size: 10px;
+  font-family: monospace;
+  color: white;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.debug {
+  display: none;
+  position: fixed;
+  bottom: 2px;
+  left: 4px;
+
+  font-family: monospace;
+  font-size: 12px;
+  color: white;
+  width: 100%;
+  text-align: left;
+  opacity: 0.6;
+}
+
+body.debug-view-enabled .debug,
+body.debug-view-enabled .item-debug {
+  display: block;
 }
