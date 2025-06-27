@@ -20,6 +20,8 @@ class TrueResponsive {
 
     document.querySelectorAll('form > *').forEach((item) => {
       item.dataset.baseWidth = item.offsetWidth.toString();
+
+      // add debug element
       const debugDiv = document.createElement('div');
       debugDiv.classList.add('item-debug');
       item.appendChild(debugDiv);
@@ -72,14 +74,19 @@ class TrueResponsive {
   }
 
   handleOrientation(e) {
-    console.log('handle orientation', e);
     const alpha = e.alpha.toFixed(2);
     const beta = e.beta.toFixed(2);
     const gamma = e.gamma.toFixed(2);
-    const newWidth = this.rotatedWidth(alpha, null);
 
-    this.debug.updateOrientationDebug(alpha, beta, gamma, newWidth);
-    this.rotateEl(alpha);
+    // Calculate Euler rotation angle
+    const betaR = (beta / 180) * Math.PI;
+    const gammaR = (gamma / 180) * Math.PI;
+    const eulerRotationR = Math.atan2(Math.cos(betaR) * Math.sin(gammaR), Math.sin(betaR));
+    const eulerRotation = ((eulerRotationR * 180) / Math.PI) * -1;
+
+    const newWidth = this.rotatedWidth(eulerRotation, null);
+    this.debug.updateOrientationDebug(alpha, beta, gamma, newWidth, eulerRotation);
+    this.rotateEl(eulerRotation);
   }
 
   rectRelativeTo(el, container) {
@@ -178,10 +185,10 @@ class TrueResponsive {
       // Pick a Delta that keeps element inside, prefer 0 if possible
       let delta = Math.max(low, Math.min(0, high));
 
-      if (index === 5) {
-        console.log('overshootL:', overshootL, 'overshootR:', overshootR);
-        console.log('low:', low, 'high:', high, 'delta:', delta);
-      }
+      // if (index === 5) {
+      //   console.log('overshootL:', overshootL, 'overshootR:', overshootR);
+      //   console.log('low:', low, 'high:', high, 'delta:', delta);
+      // }
 
       // --------------------------------------------------
       // 2) Re-evaluate overshoot after translation, then compute slice

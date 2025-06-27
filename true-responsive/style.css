@@ -29,7 +29,7 @@ body {
   height: 100vh;
   max-height: 100svh;
   width: 100vw;
-  max-width: 560px;
+  max-width: 720px;
 
   body.debug-view-enabled & {
     border: 2px solid rgba(200, 210, 250, 0.6);
@@ -38,7 +38,8 @@ body {
 
 .auth-block__wrapper {
   /* width: 100%; */
-  width: 975px; /* Or calculate dynamically */
+  /* Or calculate dynamically */
+  width: 1100px;
 
   body.debug-view-enabled & {
     border: 2px solid rgba(250, 160, 20, 0.3);

@@ -57,14 +57,15 @@ class Debug {
     }
   }
 
-  updateOrientationDebug(alpha, beta, gamma, newWidth) {
+  updateOrientationDebug(alpha, beta, gamma, newWidth, spin) {
     if (this.controls.showDebug && this.debugEl) {
       this.debugEl.innerHTML = `
         Screen height: ${this.screenHeight}<br>
         Alpha: ${alpha}<br>
         Beta: ${beta}<br>
         Gamma: ${gamma}<br>
-        Width: ${newWidth}
+        Width: ${newWidth.toFixed(2)}<br>
+        Spin: ${spin}
       `;
     }
   }
